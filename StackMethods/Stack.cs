@@ -30,18 +30,17 @@ namespace StackMethods
         #region Pop method       
         public object Pop()
         {
-            int sizeOfList = objectList.Count;
-            object popedObject = objectList[sizeOfList - 1];
-            if (sizeOfList < 0)
+            try 
             {
-                return "List is Empty";
-            }
-            else
-            {
+                int sizeOfList = objectList.Count;
+                object popedObject = objectList[sizeOfList - 1];
                 objectList.RemoveAt(sizeOfList - 1);
                 return popedObject;
             }
-         
+            catch (ArgumentOutOfRangeException exception) 
+            {
+                return exception.Message;
+            }
         }
 
         #endregion
